@@ -28,18 +28,23 @@ import com.google.firebase.database.core.Tag;
 
 public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
-    EditText textMsg;
+    EditText editUserName;
+    EditText editPassword;
+    EditText editAge;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textMsg=findViewById(R.id.textView);
+        editUserName=findViewById(R.id.editTextUserName);
+        editPassword=findViewById(R.id.editTextPassword);
+        editAge=findViewById(R.id.editTextAge);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        //Admob banner ads
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -75,11 +80,24 @@ public class MainActivity extends AppCompatActivity {
 }
 
     public void buttonGet(View view) {
-// Write a message to the database
+        // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("msg");
+        DatabaseReference myRef = database.getReference();
+        myRef.child("Users").child(editUserName.getText().toString()).child("UserName").setValue(editUserName.getText().toString());
+        myRef.child("Users").child(editUserName.getText().toString()).child("Password").setValue(editPassword.getText().toString());
+        myRef.child("Users").child(editUserName.getText().toString()).child("Age").setValue(editAge.getText().toString());
 
-        myRef.setValue(textMsg.getText().toString());
+
+
+
+
+
+
+
+
+
+
+       /* myRef.setValue(textMsg.getText().toString());
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 // Failed to read value
 
             }
-        });
+        });*/
     }
 
 }
