@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="20dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <EditText
@@ -49,10 +49,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="enter age"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <Button
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/set"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:text="set" />
 
         <LinearLayout
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -80,13 +80,55 @@
                 android:text="Anonymous" />
 
             <Button
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/buttonL"
                 android:onClick="anonymousButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login" />
 
+        </LinearLayout>
+
+        <LinearLayout
+             android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail and Password " />
+
+            <EditText
+                android:id="@+id/editTextUserNameLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="enter your email" />
+
+            <EditText
+                android:id="@+id/editTextPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="enter your password" />
+
+            <Button
+                android:id="@+id/loginButtonAuth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="authLoginButton"
+                android:text="Login Auth" />
+            <Button
+                android:id="@+id/signOutButtonAuth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="authSignOutButton"
+                android:text="Sign Out" />
         </LinearLayout>
 
 

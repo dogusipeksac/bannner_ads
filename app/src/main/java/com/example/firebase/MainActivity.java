@@ -25,7 +25,9 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editAge;
     ImageView imageView;
     FirebaseAuth mAuth;
+    EditText emailEdit;
+    EditText passwordEdit;
     FirebaseAuth.AuthStateListener mAuthListener;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +60,17 @@ public class MainActivity extends AppCompatActivity {
         editPassword=findViewById(R.id.editTextPassword);
         editAge=findViewById(R.id.editTextAge);
         mAuth=FirebaseAuth.getInstance();
+        emailEdit=findViewById(R.id.editTextUserNameLogin);
+        passwordEdit=findViewById(R.id.editTextPasswordLogin);
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged( FirebaseAuth firebaseAuth) {
-                FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                FirebaseUser user=firebaseAuth.getCurrentUser();
                 if(user==null){
-                    Log.d("sign out","sign out");
+                    Log.d("sign out","user.getUid()");
                 }
                 else{
-                    Log.d("sign in","sign in");
+                    Log.d("sign in","user.getUid()");
                 }
             }
         };
@@ -214,4 +220,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void authLoginButton(View view) {
+
+
+        AuthCredential credential= EmailAuthProvider.getCredential(emailEdit.getText().toString()
+                ,passwordEdit.getText().toString());
+        mAuth.getCurrentUser().linkWithCredential((credential)).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(Task<AuthResult> task) {
+
+
+            }
+        });
+    }
+
+
+    public void authSignOutButton(View view) {
+        mAuth.signOut();
+    }
 }
