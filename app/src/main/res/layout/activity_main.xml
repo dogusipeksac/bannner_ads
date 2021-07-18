@@ -49,17 +49,46 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="enter age"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="25dp"/>
 
         <Button
+            android:layout_marginTop="20dp"
             android:id="@+id/set"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="143dp"
-            android:layout_marginLeft="143dp"
-            android:layout_marginTop="227dp"
             android:onClick="buttonGet"
             android:text="set" />
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+          <!--  <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                tools:srcCompat="@tools:sample/avatars" />-->
+
+            <TextView
+                android:id="@+id/anonymousUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Anonymous" />
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:id="@+id/buttonL"
+                android:onClick="anonymousButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
